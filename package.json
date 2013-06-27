@@ -1,0 +1,25 @@
+{
+  "name": "tennu-luck",
+  "version": "0.0.0",
+  "description": "Tennu's Luck Module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Havvy/tennu-luck.git"
+  },
+  "keywords": [
+    "tennu"
+  ],
+  "author": "Havvy (Ryan S. Scheel)",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/Havvy/tennu-luck/issues"
+  },
+  "dependencies": {
+    "hrandom" : "~1.1.0",
+    "dados": ">=1.0.0"
+  }
+}
