@@ -21,5 +21,5 @@ Takes a list of choices, and randomly selects one.
 Takes a number and a list of choices, and randomly selects that number of
 choices from the list.
 
-<user>tennu: choose 2 A B C D
+<user>tennu: sample 2 A B C D
 <tennu>Sampled: [A, D]
