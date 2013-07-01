@@ -7,6 +7,10 @@ module.exports = function TennuLuckModule (tennu) {
     function roll (command) {
         var result = dados.roll(command.args.join(""));
 
+        if (command.isSubcommand) {
+            return result;
+        }
+
         if(!isNaN(result)) {
             tennu.say(command.channel, "Rolling " + command.args.join(" ") + " | Result: " + result);
         } else {
@@ -16,6 +20,11 @@ module.exports = function TennuLuckModule (tennu) {
 
     function which (command) {
         var chosen =  Random.nextElement(command.args);
+
+        if (command.isSubcommand) {
+            return chosen;
+        }
+
         tennu.say(command.channel, 'Choosing ' + chosen + '.');
     }
 
@@ -39,6 +48,11 @@ module.exports = function TennuLuckModule (tennu) {
         }
 
         var sampled = Random.nextElements(args, n);
+
+        if (command.isSubcommand) {
+            return sampled;
+        }
+
         tennu.say(command.channel, 'Sampled [' + sampled.join(', ') + ']');
     }
 
