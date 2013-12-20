@@ -1,3 +1,11 @@
+/**
+ * License: MIT
+ * Author: Ryan (Havvy) Scheel
+ *
+ * Note: command.isSubcommand is for a custom CommandHandler.
+ */
+
+
 var dados = require("dados");
 var Hrandom = require('hrandom');
 
@@ -5,16 +13,17 @@ module.exports = function TennuLuckModule (tennu) {
     var Random = new Hrandom(Date.now());
 
     function roll (command) {
-        var result = dados.roll(command.args.join(""));
+        var request = command.args.join("");
+        var result = dados.roll(request);
 
         if (command.isSubcommand) {
             return result;
         }
 
         if(!isNaN(result)) {
-            tennu.say(command.channel, "Rolling " + command.args.join(" ") + " | Result: " + result);
+            return "Rolling " + request + " | Result: " + result;
         } else {
-            tennu.say(command.channel, "Failed to roll " + command.args.join(" ") + ".");
+            return "Failed to roll " + request + ".";
         }
     }
 
@@ -25,7 +34,7 @@ module.exports = function TennuLuckModule (tennu) {
             return chosen;
         }
 
-        tennu.say(command.channel, 'Choosing ' + chosen + '.');
+        return 'Choosing ' + chosen + '.');
     }
 
     function sample (command) {
@@ -33,18 +42,15 @@ module.exports = function TennuLuckModule (tennu) {
         var n = Math.floor(+args.shift());
 
         if (n === 0) {
-            tennu.say(command.channel, "Sampling nothing.");
-            return;
+            return "Sampling nothing.";
         }
 
         if (n < 0) {
-            tennu.say(command.channel, "Error: Cannot sample negative options.");
-            return;
+            return "Error: Cannot sample negative options.";
         }
 
         if (n > args.length) {
-            tennu.say(command.channel, "Not enough options to sample.");
-            return;
+            return "Not enough options to sample.";
         }
 
         var sampled = Random.nextElements(args, n);
@@ -53,7 +59,7 @@ module.exports = function TennuLuckModule (tennu) {
             return sampled;
         }
 
-        tennu.say(command.channel, 'Sampled [' + sampled.join(', ') + ']');
+        return 'Sampled [' + sampled.join(', ') + ']';
     }
 
     return {
