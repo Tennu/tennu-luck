@@ -1,6 +1,6 @@
 {
   "name": "tennu-luck",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Tennu's Luck Module",
   "main": "index.js",
   "scripts": {
