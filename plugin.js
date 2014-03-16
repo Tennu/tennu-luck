@@ -1,13 +1,12 @@
 /**
- * License: MIT
+ * License: ISC
  * Author: Ryan (Havvy) Scheel
- *
- * Note: command.isSubcommand is for a custom CommandHandler.
  */
 
 
 const dados = require('dados');
 const Hrandom = require('hrandom');
+const format = require('util').format;
 
 module.exports = {
     init: function TennuLuckModule (tennu) {
@@ -18,16 +17,16 @@ module.exports = {
             const result = dados.roll(request);
 
             if(!isNaN(result)) {
-                return 'Rolling ' + request + ' | Result: ' + result;
+                return format('Rolling %s | Result: %s', request, result);
             } else {
-                return 'Failed to roll ' + request + '.';
+                return format('Failed to roll %s.', request);
             }
         }
 
         function which (command) {
             const chosen = Random.nextElement(command.args);
 
-            return 'Choosing ' + chosen + '.');
+            return format('Choosing %s.', chosen);
         }
 
         function sample (command) {
@@ -35,7 +34,7 @@ module.exports = {
             const n = Math.floor(+args.shift());
 
             if (n === 0) {
-                return 'Sampling nothing.';
+                return 'Error Sampling nothing.';
             }
 
             if (n < 0) {
@@ -43,7 +42,7 @@ module.exports = {
             }
 
             if (n > args.length) {
-                return 'Not enough options to sample.';
+                return 'Error: Not enough options to sample.';
             }
 
             const sampled = Random.nextElements(args, n);
@@ -60,7 +59,9 @@ module.exports = {
                 '!roll' : roll,
                 '!choose !which' : which,
                 '!sample' : sample
-            }
+            },
+
+            commands: ['choose', 'which', 'roll', 'sample']
         };
 
     }

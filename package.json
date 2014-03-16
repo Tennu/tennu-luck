@@ -1,8 +1,8 @@
 {
   "name": "tennu-luck",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Tennu's Luck Module",
-  "main": "index.js",
+  "main": "plugin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
