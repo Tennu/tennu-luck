@@ -72,7 +72,7 @@ module.exports = {
                 '!sample' : sample
             },
 
-            commands: ['choose', 'which', 'roll', 'sample']
+            commands: ['choose', 'which', 'coin', 'roll', 'sample']
         };
 
     }
