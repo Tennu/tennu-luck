@@ -17,7 +17,7 @@ module.exports = {
             const result = dados.roll(request);
 
             if(!isNaN(result)) {
-                return format('Rolling %s | Result: %s', request, result);
+                return format('Rolling %s | Result: %s', command.args.join(' '), result);
             } else {
                 return format('Failed to roll %s.', request);
             }
@@ -50,12 +50,23 @@ module.exports = {
             return 'Sampled [' + sampled.join(', ') + ']';
         }
 
+        function coin (command) {
+            var flip = Random.nextInt();
+
+            if (flip) {
+                return 'Heads';
+            } else {
+                return 'Tails';
+            }
+        }
+
         return {
             exports : {
                 'Random' : Random
             },
 
             handlers : {
+                '!coin': coin,
                 '!roll' : roll,
                 '!choose !which' : which,
                 '!sample' : sample
