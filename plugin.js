@@ -51,7 +51,7 @@ module.exports = {
         }
 
         function coin (command) {
-            var flip = Random.nextInt();
+            var flip = Random.nextBoolean();
 
             if (flip) {
                 return 'Heads';
