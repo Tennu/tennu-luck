@@ -31,10 +31,14 @@ module.exports = {
 
         function sample (command) {
             const args = command.args.slice();
+
+            if (args.length === 0) {
+                return 'Format: sample <n> <option>...';
+            }
             const n = Math.floor(+args.shift());
 
             if (n === 0) {
-                return 'Error Sampling nothing.';
+                return 'Error: Sampling nothing.';
             }
 
             if (n < 0) {
@@ -72,8 +76,46 @@ module.exports = {
                 '!sample' : sample
             },
 
-            commands: ['choose', 'which', 'coin', 'roll', 'sample']
-        };
+            commands: ['choose', 'which', 'coin', 'roll', 'sample'],
 
+            help: {
+                'choose': [
+                    '!choose <option>...',
+                    '',
+                    'Randomly chooses one of the options.',
+                    'Ex: !choose A B C',
+                    '<bot> Choosing C.'
+                ],
+
+                'which': 'Alias for !choose',
+
+                'roll': [
+                    '!roll <formula>',
+                    '',
+                    'Rolls the give formula.',
+                    'Has support for +, *, /, -, `d`, ()',
+                    'Unknown characters and `d` operators on the outside are stripped.',
+                    'Ex: !roll (4d5 + 1d2d3) * 3',
+                    '<bot> Rolling (4d5 + 1d2d3) * 3 | Result: 51',
+                    '',
+                    'Ex: !roll 1d6 for damaging the grue',
+                    '<bot>: Rolling 1d6 for damaging the grue | Result: 6'
+                ],
+
+                'sample': [
+                    '!sample <n> <option>...',
+                    '',
+                    'Chooses n options from the list of options.',
+                    'Ex: sample 2 A B C D E F',
+                    '<bot> Sampled [D, F]'
+                ],
+
+                'coin': [
+                    '!coin',
+                    '',
+                    'Bot responds with either "Heads" or "Tails"'
+                ]
+            }
+        };
     }
 };
