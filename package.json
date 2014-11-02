@@ -1,10 +1,11 @@
 {
   "name": "tennu-luck",
-  "version": "2.2.0",
+  "version": "2.3.1",
   "description": "Tennu's Luck Module",
   "main": "plugin.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run-script build && mocha test/luck.js",
+    "build": "sjs -m \"sweet-bdd\" -o test/luck.js test/luck.sjs"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,13 @@
     "url": "https://github.com/Havvy/tennu-luck/issues"
   },
   "dependencies": {
-    "hrandom" : "~1.1.0",
+    "hrandom": "~1.1.0",
     "dados": ">=1.0.0"
+  },
+  "devDependencies": {
+    "better-assert": "^1.0.1",
+    "mocha": "^2.0.1",
+    "sweet-bdd": "^1.1.0",
+    "sweet.js": "^0.7.2"
   }
 }

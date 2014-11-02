@@ -1,1 +1,3 @@
 *.sublime*
+test/luck.js
+node_modules/

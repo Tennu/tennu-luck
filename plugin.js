@@ -35,7 +35,12 @@ module.exports = {
             if (args.length === 0) {
                 return 'Format: sample <n> <option>...';
             }
+
             const n = Math.floor(+args.shift());
+
+            if (Object.is(n, NaN)) {
+                return "Error: First argument must be a number.";
+            }
 
             if (n === 0) {
                 return 'Error: Sampling nothing.';
@@ -50,7 +55,6 @@ module.exports = {
             }
 
             const sampled = Random.nextElements(args, n);
-
             return 'Sampled [' + sampled.join(', ') + ']';
         }
 
